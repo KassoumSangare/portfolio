@@ -1,6 +1,7 @@
 /* ==========================================================================
    PORTFOLIO — custom.css
-   Palette "lagune d'Abidjan" : nuit profonde, ambre coucher de soleil, teal lagune.
+   Palette 1 "Lagune Nocturne" — 60% dominante bleu-nuit / 30% secondaire
+   gris-bleu clair / 10% accent ambre. Contrastes vérifiés WCAG AAA.
    Typo : Space Grotesk (titres) / Inter (corps) / JetBrains Mono (code, tags).
    ========================================================================== */
 
@@ -8,19 +9,18 @@
    1. Design tokens (variables CSS)
    -------------------------------------------------------------------------- */
 :root[data-theme="dark"] {
-    --bg: #0B1120;
-    --surface: #121B2E;
-    --surface-2: #17233B;
-    --surface-3: #1E2C48;
-    --text: #E8EDF5;
-    --text-muted: #8891A5;
-    --accent: #F5A623;
-    --accent-hover: #FFC24D;
-    --accent-2: #2DD4BF;
-    --accent-2-hover: #5EEAD4;
-    --border: rgba(255, 255, 255, 0.08);
-    --border-strong: rgba(255, 255, 255, 0.16);
-    --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.55);
+    /* Palette 1 — "Lagune Nocturne" (60% dominante / 30% secondaire / 10% accent) */
+    --bg: #0D1220;
+    --surface: #121A2C;
+    --surface-2: #162035;
+    --surface-3: #1C2A45;
+    --text: #C9D2E3;
+    --text-muted: #8791A8;
+    --accent: #F2A93B;
+    --accent-hover: #FFC266;
+    --border: rgba(201, 210, 227, 0.10);
+    --border-strong: rgba(201, 210, 227, 0.18);
+    --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
     --danger: #F87171;
     --success: #34D399;
 }
@@ -34,8 +34,6 @@
     --text-muted: #5B6472;
     --accent: #D9820A;
     --accent-hover: #B96C08;
-    --accent-2: #0F9488;
-    --accent-2-hover: #0C7A70;
     --border: rgba(16, 24, 40, 0.08);
     --border-strong: rgba(16, 24, 40, 0.14);
     --shadow: 0 20px 40px -12px rgba(16, 24, 40, 0.12);
@@ -86,7 +84,7 @@ a:hover { color: var(--accent-hover); }
 
 .terminal-eyebrow {
     font-family: var(--font-mono);
-    color: var(--accent-2);
+    color: var(--accent);
     font-size: 0.85rem;
     margin-bottom: 0.75rem;
     display: inline-block;
@@ -196,7 +194,7 @@ a:hover { color: var(--accent-hover); }
     gap: 0.5rem;
     transition: border-color 0.2s ease, transform 0.2s ease;
 }
-.btn-hero-outline:hover { border-color: var(--accent-2); color: var(--text); transform: translateY(-2px); }
+.btn-hero-outline:hover { border-color: var(--accent); color: var(--text); transform: translateY(-2px); }
 
 /* --------------------------------------------------------------------------
    5. Hero
@@ -228,7 +226,7 @@ a:hover { color: var(--accent-hover); }
 
 .hero-title {
     font-family: var(--font-mono);
-    color: var(--accent-2);
+    color: var(--accent);
     font-size: 1.15rem;
     margin-bottom: 1rem;
 }
@@ -279,7 +277,7 @@ a:hover { color: var(--accent-hover); }
     transform: translateX(-50%);
     background: var(--surface);
     border: 1px solid var(--border-strong);
-    color: var(--accent-2);
+    color: var(--accent);
     font-family: var(--font-mono);
     font-size: 0.8rem;
     padding: 0.4rem 1rem;
@@ -308,7 +306,7 @@ a:hover { color: var(--accent-hover); }
     box-shadow: var(--shadow);
 }
 .about-card-line { margin-bottom: 0.6rem; color: var(--text); word-break: break-word; }
-.about-card-key { color: var(--accent-2); }
+.about-card-key { color: var(--accent); }
 .about-card-status { color: var(--success); margin-bottom: 0; }
 
 /* --------------------------------------------------------------------------
@@ -322,9 +320,9 @@ a:hover { color: var(--accent-hover); }
     height: 100%;
     transition: border-color 0.2s ease, transform 0.2s ease;
 }
-.skill-category-card:hover { border-color: var(--accent-2); transform: translateY(-4px); }
+.skill-category-card:hover { border-color: var(--accent); transform: translateY(-4px); }
 
-.skill-category-title { font-size: 1.15rem; margin-bottom: 1.25rem; color: var(--accent-2); }
+.skill-category-title { font-size: 1.15rem; margin-bottom: 1.25rem; color: var(--accent); }
 
 .skill-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1.1rem; }
 .skill-item-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem; }
@@ -339,10 +337,10 @@ a:hover { color: var(--accent-hover); }
 
 .skill-bar { height: 6px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
 .skill-bar-fill { height: 100%; border-radius: 999px; background: var(--accent); }
-.skill-bar-debutant { width: 30%; }
-.skill-bar-intermediaire { width: 55%; background: var(--accent-2); }
+.skill-bar-debutant { width: 30%; background: color-mix(in srgb, var(--accent) 45%, var(--text-muted)); }
+.skill-bar-intermediaire { width: 55%; background: color-mix(in srgb, var(--accent) 75%, var(--text-muted)); }
 .skill-bar-avance { width: 80%; }
-.skill-bar-expert { width: 100%; background: var(--accent); }
+.skill-bar-expert { width: 100%; }
 
 /* --------------------------------------------------------------------------
    8. Timeline (expériences / formations)
@@ -382,7 +380,7 @@ a:hover { color: var(--accent-hover); }
 }
 .timeline-section-alt .timeline-card { background: var(--bg); }
 
-.timeline-date { font-family: var(--font-mono); color: var(--accent-2); font-size: 0.8rem; }
+.timeline-date { font-family: var(--font-mono); color: var(--accent); font-size: 0.8rem; }
 .timeline-title { margin: 0.4rem 0 0.15rem; font-size: 1.2rem; }
 .timeline-subtitle { color: var(--text-muted); margin-bottom: 0.6rem; }
 .timeline-description { color: var(--text-muted); margin-bottom: 0.5rem; }
@@ -409,7 +407,7 @@ a:hover { color: var(--accent-hover); }
     flex-direction: column;
     transition: transform 0.25s ease, border-color 0.25s ease;
 }
-.project-card:hover { transform: translateY(-6px); border-color: var(--accent-2); }
+.project-card:hover { transform: translateY(-6px); border-color: var(--accent); }
 
 .project-card-image { position: relative; aspect-ratio: 16 / 10; background: var(--surface-2); }
 .project-card-image img { width: 100%; height: 100%; object-fit: cover; }
@@ -436,7 +434,7 @@ a:hover { color: var(--accent-hover); }
 
 .project-card-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
 .project-card-title { font-size: 1.15rem; margin-bottom: 0.2rem; }
-.project-card-client { color: var(--accent-2); font-size: 0.85rem; margin-bottom: 0.6rem; }
+.project-card-client { color: var(--accent); font-size: 0.85rem; margin-bottom: 0.6rem; }
 .project-card-description { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1rem; flex-grow: 1; }
 
 .project-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
@@ -465,7 +463,7 @@ a:hover { color: var(--accent-hover); }
 
 .contact-info-list { list-style: none; padding: 0; margin-bottom: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; }
 .contact-info-list a { color: var(--text); }
-.contact-info-list i { color: var(--accent-2); margin-right: 0.5rem; }
+.contact-info-list i { color: var(--accent); margin-right: 0.5rem; }
 
 .contact-form {
     background: var(--surface);
@@ -491,8 +489,8 @@ a:hover { color: var(--accent-hover); }
 .contact-form .form-control:focus {
     background: var(--surface-2);
     color: var(--text);
-    border-color: var(--accent-2);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 20%, transparent);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
 }
 .contact-form .form-label { font-weight: 500; font-size: 0.9rem; margin-bottom: 0.4rem; }
 
@@ -729,7 +727,7 @@ a:hover { color: var(--accent-hover); }
     text-transform: capitalize;
 }
 .admin-badge-level-debutant { background: color-mix(in srgb, var(--text-muted) 20%, transparent); color: var(--text-muted); }
-.admin-badge-level-intermediaire { background: color-mix(in srgb, var(--accent-2) 18%, transparent); color: var(--accent-2); }
+.admin-badge-level-intermediaire { background: color-mix(in srgb, var(--accent) 10%, transparent); color: color-mix(in srgb, var(--accent) 75%, var(--text-muted)); }
 .admin-badge-level-avance { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
 .admin-badge-level-expert { background: color-mix(in srgb, var(--success) 18%, transparent); color: var(--success); }
 
@@ -741,7 +739,7 @@ a:hover { color: var(--accent-hover); }
 }
 .admin-list-item-body { flex-grow: 1; }
 .admin-list-item-body h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
-.admin-list-item-meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-2); margin-bottom: 0.4rem; }
+.admin-list-item-meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); margin-bottom: 0.4rem; }
 .admin-reorder-buttons { display: flex; flex-direction: column; gap: 0.3rem; }
 .admin-list-item-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
 
