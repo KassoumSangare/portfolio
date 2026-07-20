@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg fixed-top site-navbar" id="siteNavbar">
     <div class="container">
-        <a class="navbar-brand" href="#accueil">
+        <!-- <a class="navbar-brand" href="#accueil">
             <span class="terminal-eyebrow-inline"></span>{{ Str::of($profile->first_name)->lower() }}
-        </a>
+        </a> -->
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavbarNav" aria-controls="siteNavbarNav" aria-expanded="false" aria-label="Ouvrir la navigation">
             <i class="bi bi-list"></i>
