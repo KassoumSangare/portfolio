@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminContactMessageController;
 use App\Http\Controllers\Admin\AdminEducationController;
 use App\Http\Controllers\Admin\AdminExperienceController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -68,4 +69,9 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::resource('projects', AdminProjectController::class)->except(['show']);
     Route::patch('/projects/{project}/move-up', [AdminProjectController::class, 'moveUp'])->name('projects.move-up');
     Route::patch('/projects/{project}/move-down', [AdminProjectController::class, 'moveDown'])->name('projects.move-down');
+
+    // Messages de contact : lecture et suppression uniquement (jamais de create/edit)
+    Route::get('/messages', [AdminContactMessageController::class, 'index'])->name('messages.index');
+    Route::get('/messages/{message}', [AdminContactMessageController::class, 'show'])->name('messages.show');
+    Route::delete('/messages/{message}', [AdminContactMessageController::class, 'destroy'])->name('messages.destroy');
 });

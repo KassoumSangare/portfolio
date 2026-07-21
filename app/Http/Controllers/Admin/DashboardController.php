@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactMessage;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Profile;
@@ -24,6 +25,8 @@ class DashboardController extends Controller
             'educations_count' => Education::count(),
             'projects_count' => Project::count(),
             'featured_projects_count' => Project::featured()->count(),
+            'messages_count' => ContactMessage::count(),
+            'unread_messages_count' => ContactMessage::where('is_read', false)->count(),
         ];
 
         return view('admin.dashboard', compact('stats'));

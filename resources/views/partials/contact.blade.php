@@ -15,6 +15,12 @@
                     @endif
                     @if ($profile->phone)
                         <li><i class="bi bi-telephone"></i> <a href="tel:{{ $profile->phone }}">{{ $profile->phone }}</a></li>
+                        <li>
+                            <i class="bi bi-whatsapp"></i>
+                            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $profile->phone) }}" target="_blank" rel="noopener">
+                                WhatsApp : {{ $profile->phone }}
+                            </a>
+                        </li>
                     @endif
                     @if ($profile->city)
                         <li><i class="bi bi-geo-alt"></i> {{ $profile->address ? $profile->address . ', ' : '' }}{{ $profile->city }}</li>
@@ -22,6 +28,9 @@
                 </ul>
 
                 <div class="hero-socials">
+                    @if ($profile->phone)
+                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $profile->phone) }}" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    @endif
                     @if ($profile->github_url)
                         <a href="{{ $profile->github_url }}" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
                     @endif

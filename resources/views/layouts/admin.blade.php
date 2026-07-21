@@ -45,6 +45,13 @@
                 <a href="{{ route('admin.projects.index') }}" class="admin-nav-link {{ request()->routeIs('admin.projects.*') ? 'active' : '' }}">
                     <i class="bi bi-kanban"></i> Projets
                 </a>
+                <a href="{{ route('admin.messages.index') }}" class="admin-nav-link {{ request()->routeIs('admin.messages.*') ? 'active' : '' }}">
+                    <i class="bi bi-envelope"></i> Messages
+                    @php($unreadCount = \App\Models\ContactMessage::where('is_read', false)->count())
+                    @if ($unreadCount > 0)
+                        <span class="admin-badge admin-badge-featured ms-auto">{{ $unreadCount }}</span>
+                    @endif
+                </a>
             </nav>
 
             <div class="admin-sidebar-footer">
@@ -93,6 +100,12 @@
                     </a>
                     <a href="{{ route('admin.projects.index') }}" class="admin-nav-link {{ request()->routeIs('admin.projects.*') ? 'active' : '' }}">
                         <i class="bi bi-kanban"></i> Projets
+                    </a>
+                    <a href="{{ route('admin.messages.index') }}" class="admin-nav-link {{ request()->routeIs('admin.messages.*') ? 'active' : '' }}">
+                        <i class="bi bi-envelope"></i> Messages
+                        @if ($unreadCount > 0)
+                            <span class="admin-badge admin-badge-featured ms-auto">{{ $unreadCount }}</span>
+                        @endif
                     </a>
                 </nav>
                 <div class="admin-sidebar-footer">
