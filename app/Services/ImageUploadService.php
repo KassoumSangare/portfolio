@@ -39,7 +39,7 @@ class ImageUploadService
 
         $slug = Str::slug($originalName);
 
-        return $slug . '_' . time() . '.' . $extension;
+        return $slug . '_' . $extension;
     }
 
     /**
