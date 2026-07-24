@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ImageUploadService
 {
@@ -22,7 +23,23 @@ class ImageUploadService
             $this->delete($oldPath);
         }
 
-        return $file->store($directory, 'public');
+        $filename = $this->generateFilename($file);
+
+        return $file->storeAs($directory, $filename, 'public');
+    }
+
+    /**
+     * Génère un nom de fichier lisible basé sur le nom original,
+     * suffixé par un identifiant unique pour éviter les collisions.
+     */
+    protected function generateFilename(UploadedFile $file): string
+    {
+        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = $file->getClientOriginalExtension();
+
+        $slug = Str::slug($originalName);
+
+        return $slug . '_' . time() . '.' . $extension;
     }
 
     /**
